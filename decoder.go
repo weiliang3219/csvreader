@@ -140,7 +140,7 @@ func (d *Decoder) unMarshal(row []string, beanT reflect.Type) (beanR reflect.Val
 		} else {
 			index, ok = d.getIndex(fileT.Name)
 		}
-		if ok {
+		if ok && index < len(row){
 			value = row[index]
 			if fileV.Kind() == reflect.Ptr {
 				fileV.Set(reflect.New(fileV.Type().Elem()))
